@@ -1,0 +1,12 @@
+chdir
+cls
+copy
+date
+del
+dir
+echo
+mkdir
+move
+mem
+find
+type

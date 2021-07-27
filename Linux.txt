@@ -1,0 +1,12 @@
+pwd
+clear
+cp
+date
+rm
+ls
+echo
+mkdir
+mv
+free
+grep
+cat

@@ -1,0 +1,264 @@
+DOSCommands(1)                              DOS Commands                             DOSCommands(1)
+
+NAME
+       DOS Commands - A project that simulate a shell that accepts DOS commands and displays the output
+       
+       
+       chdir   -print name of current/working directory
+       cls     -clear the terminal screen
+       copy    -copy files and directories
+       date    -print or set the system date and time
+       del     -remove files or directories
+       dir     -list directory contents
+       echo    -"Echoes" output on the screen
+       mkdir   -create a directory
+       move    -move files
+       mem     -system memory, kernel memory and system ports
+       find    -print lines that match patterns
+       type    -concatenate files and print on the standard output
+       
+       
+       
+       
+       
+       
+       
+       
+       
+     
+       
+
+SYNOPSIS
+
+	chdir [OPTION]...
+	
+	cls [-Ttype] [-V] [-x]
+
+	copy [OPTION]... [-T] SOURCE DEST
+	copy [OPTION]... SOURCE... DIRECTORY
+	copy [OPTION]... -t DIRECTORY SOURCE...
+	
+	date date [OPTION]... [+FORMAT]
+	date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+	
+	
+	del [OPTION]... FILE...
+	
+	dir [OPTION]... [FILE]...
+	
+	echo [OPTION]... [STRING]...
+
+	mkdir [OPTION]... DIRECTORY...
+
+	move [OPTION]... [-T] SOURCE DEST
+	move [OPTION]... SOURCE... DIRECTORY
+	move [OPTION]... -t DIRECTORY SOURCE...
+	
+	mem [options]
+
+	find [OPTION...] PATTERNS [FILE...]
+	find [OPTION...] -e PATTERNS ... [FILE...]
+	find [OPTION...] -f PATTERN_FILE ... [FILE...]
+
+	type [OPTION]... [FILE]...
+
+DESCRIPTION
+
+	chdir:  Print the full filename of the current working directory.
+
+		-L, --logical
+			use chdir from environment, even if it contains symlinks
+		-P, --physical
+			avoid all symlinks
+		--help
+			display this help and exit
+		--version
+			output version information and exit
+		
+		
+	copy:  Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+
+       	-a, --archive
+               	 same as -dR --preserve=all
+
+     		--attributes-only
+           	        don't copy the file data, just the attributes
+
+	       -u, --update
+		      copy only when the SOURCE file is newer than the  destination
+		      file or when the destination file is missing
+
+	       -v, --verbose
+		      explain what is being done
+
+	       -x, --one-file-system
+		      stay on this file system
+
+	       -Z     set  SELinux  security context of destination file to default
+		      type
+
+			
+	date:   Display the current time in the given FORMAT, or set the system date.
+
+    		   -d, --date=STRING
+        	      display time described by STRING, not 'now'
+
+     		  --debug
+        	      annotate  the  parsed date, and warn about questionable usage to stderr
+    		   -u, --utc, --universal
+	              print or set Coordinated Universal Time (UTC)
+
+                 --help display this help and exit
+
+     		  --version
+                    output version information and exit
+
+		  
+		
+	del:   Remove (unlink) the FILE(s).
+
+	
+		-f, --force
+		ignore nonexistent files, never prompt
+		-i
+		prompt before every removal
+		-I
+		prompt once before removing more than three files, or when removing recursively. Less intrusive than -i, while still giving protection against most mistakes
+		--interactive[=WHEN]
+		prompt according to WHEN: never, once (-I), or always (-i). Without WHEN, prompt always
+		--one-file-system
+		when removing a hierarchy recursively, skip any directory that is on a file system different from that of the corresponding command line argument
+		--no-preserve-root
+		do not treat `/' specially
+		--preserve-root
+		do not remove `/' (default)
+		-r, -R, --recursive
+		remove directories and their contents recursively
+		-v, --verbose
+		explain what is being done
+		--help
+		display this help and exit
+		--version
+		output version information and exit
+		
+	dir:    List information about the FILEs (the current directory by default). Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+
+
+	       -a, --all
+	              do not ignore entries starting with .
+
+	       -A, --almost-all
+        	      do not list implied . and ..
+
+
+		
+		
+       echo:   Echo the STRING(s) to standard output.
+
+   	      -n     
+   	        do not output the trailing newline
+
+    	      -e     
+    	         enable interpretation of backslash escapes
+
+              -E    
+              	 disable interpretation of backslash escapes (default)
+
+             --help 
+             	display this help and exit
+
+            --version
+              output version information and exit
+    
+    
+       mkdir:  Create the DIRECTORY(ies), if they do not already exist.
+
+      
+      	       -m, --mode=MODE
+                 set file mode (as in chmod), not a=rwx - umask
+		
+               -p, --parents
+                 no error if existing, make parent directories as needed
+
+               -v, --verbose
+                 print a message for each created directory
+                 
+             
+      move:    Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
+            
+             --backup[=CONTROL]
+              make a backup of each existing destination file
+
+	       -b     like --backup but does not accept an argument
+
+	       -f, --force
+
+      mem:     displays  the  total amount of free and used physical and swap
+		memory in the system, as well as the buffers and caches used by  the
+	        kernel.  The  information  is gathered by parsing /proc/meminfo. The
+		displayed columns are:
+
+		total  Total installed memory (MemTotal and SwapTotal in  /proc/mem‐info)
+
+		used   Used memory (calculated as total - free - buffers - cache)
+
+		free   Unused memory (MemFree and SwapFree in /proc/meminfo)
+
+		shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo)
+
+     find:      searches  for  PATTERNS in each FILE.  PATTERNS is one or more
+                patterns separated by newline characters, and grep prints each  line
+                that  matches  a  pattern.  Typically PATTERNS should be quoted when
+                grep is used in a shell command.
+
+                 A FILE of “-” stands for standard  input.   If  no  FILE  is  given,
+                 recursive  searches  examine the working directory, and nonrecursive
+                searches read standard input.
+
+               In addition, the variant programs egrep, fgrep  and  rgrep  are  the
+               same as grep -E, grep -F, and grep -r, respectively.
+               
+               --help Output a usage message and exit.
+
+              -V, --version
+                 Output the version number of grep and exit.
+                 
+                 
+
+    type:       Concatenate FILE(s) to standard output.
+
+	       With no FILE, or when FILE is -, read standard input.
+
+	       -A, --show-all
+		      equivalent to -vET
+
+	       -b, --number-nonblank
+		      number nonempty output lines, overrides -n
+
+	       -e     equivalent to -vE
+
+	       -E, --show-ends
+		      display $ at end of each line
+
+	       -n, --number
+		      number all output lines
+
+	       -s, --squeeze-blank
+		      suppress repeated empty output lines
+
+	       -t     equivalent to -vT
+
+	       -T, --show-tabs
+		      display TAB characters as ^I
+
+	       -u     (ignored)
+
+	       -v, --show-nonprinting
+		      use ^ and M- notation, except for LFD and TAB
+
+	       --help display this help and exit
+
+	       --version
+		      output version information and exit
